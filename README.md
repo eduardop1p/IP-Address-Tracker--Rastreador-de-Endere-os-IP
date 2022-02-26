@@ -14,7 +14,7 @@
 # Tecnologias usadas para esse projeto:
 # HTML5
 # CSS3 com responsive layout flex-box
-# JavaScrip
+# JavaScript
 # Axios API
 # Webpack + Babel
 # Core-js
