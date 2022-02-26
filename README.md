@@ -16,6 +16,7 @@
 # CSS3 com responsive layout flex-box
 # JavaScript
 # Axios API
+# dotEnv
 # Webpack + Babel
 # Core-js
 # Leaflet

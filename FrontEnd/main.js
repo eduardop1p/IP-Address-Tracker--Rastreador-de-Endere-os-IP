@@ -1,4 +1,4 @@
-import 'core-js'
+import 'core-js/stable'
 import 'regenerator-runtime'
 
 import leaflet from 'leaflet'
@@ -47,7 +47,7 @@ class IpAddressTracker{
     async geolocationApi(ipUserNum){
         if(!this.ipElment.value) return this.err('Campo IP não pode está vazio.')
         this.loaderActived()
-        const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_FSfQ5I70R0eqjnrwflPKWQTun0bwK&ipAddress=${ipUserNum}`
+        const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_KEY_GEOLOCATION}&ipAddress=${ipUserNum}`
         try{
             const axiosApi = await axios(url)
             const data = axiosApi.data
@@ -103,8 +103,8 @@ class IpAddressTracker{
         contentIsp.innerHTML = this.geolocationObject.isp
     }
     leafletMaps(){
-        const map = leaflet.map(this.mapElment).setView([this.geolocationObject.location.lat, this.geolocationObject.location.lng], 16)
-        leaflet.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWR1YXJkb3AxcCIsImEiOiJja3p5cW43NWMwMncxM2txeHZwaTRqZWVxIn0.2UEA00eY6MScKPz0ILaKtQ', {
+        const map = leaflet.map(this.mapElment).setView([this.geolocationObject.location.lat, this.geolocationObject.location.lng], 14)
+        leaflet.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${process.env.TOCKEN_ACESS_MAP}`, {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 20,
             minZoom: 3,
