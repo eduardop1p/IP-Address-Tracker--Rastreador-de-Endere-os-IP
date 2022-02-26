@@ -47,7 +47,7 @@ class IpAddressTracker{
     async geolocationApi(ipUserNum){
         if(!this.ipElment.value) return this.err('Campo IP não pode está vazio.')
         this.loaderActived()
-        const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_k2LrmihS46p0ExjKSnJ8lJqdGKzFo&ipAddress=${ipUserNum}`
+        const url = `https://geo.ipify.org/api/v2/country,city?apiKey=at_FSfQ5I70R0eqjnrwflPKWQTun0bwK&ipAddress=${ipUserNum}`
         try{
             const axiosApi = await axios(url)
             const data = axiosApi.data
