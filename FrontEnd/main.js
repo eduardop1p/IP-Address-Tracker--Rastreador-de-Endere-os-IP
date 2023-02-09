@@ -20,16 +20,18 @@ class IpAddressTracker{
         setTimeout(()=> alert(msg), 50)
     }
     enterFormIpInit(){
-        this.ipElment.addEventListener('keyup', event => {
-            if(event.keyCode === 13) return this.geolocationApi(this.ipElment.value)
-        })
+        const containerSearchIp = document.querySelector('.container-search-ip')
+        containerSearchIp.onsubmit = (event) => {
+            event.preventDefault();
+            this.geolocationApi(this.ipElment.value)
+        }
     }
     async ipUser(){
         this.loaderActived()
         const url = 'https://api.ipify.org/?format=json'
         try{
-            const ipUserApi = await axios(url)
-            const data = ipUserApi.data
+            const { data } = await axios(url)
+
             this.ipUserNum = data.ip
         }catch(err){ 
             this.limpaLoader()
@@ -49,8 +51,7 @@ class IpAddressTracker{
         this.loaderActived()
         const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_KEY_GEOLOCATION}&ipAddress=${ipUserNum}`
         try{
-            const axiosApi = await axios(url)
-            const data = axiosApi.data
+            const { data } = await axios(url)
             this.geolocationObject = {
                 ip: ipUserNum,
                 location: { 
