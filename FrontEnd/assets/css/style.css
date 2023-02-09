@@ -107,26 +107,28 @@ h1{
     box-shadow: 10px 10px 60px -20px hsl(0, 0%, 59%);
 }
 
-.ip-address-info > :nth-child(n+2){
-    width: 220px;
-    padding-left: 1.5rem;
-    padding-right: 8px;
-    border-left: 2px solid  hsl(0, 0%, 85%);
+.ip-address-info > :not(:last-child){
+    border-right: 2px solid  hsl(0, 0%, 85%);
 }
-
-.ip-address-info > :first-child{
-    width: 220px;
-    padding-right: 8px;
+.ip-address-info > div{
+    padding: 0 1rem;
 }
 
 .infos{
     margin-top: 5px;
     font-weight: 700;
     color: hsl(0, 0%, 17%);
+    font-size: 1rem;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
 }
 
 h4{
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 1px;
     font-weight: 600;
     color: hsl(0, 0%, 59%);
@@ -158,26 +160,36 @@ footer{
 
 @media screen and (max-width: 850px) {
     header{
-        height: 320px;
+        height: 250px;
+    }
+    header > :not(:last-child) {
+        margin-bottom: 1rem;
     }
 
     .ip-address-info{
-        top: -7rem;
+        top: -4rem;
         width: 400px;
         flex-direction: column;
         height: fit-content;
         align-items: center;
+        padding: 1rem;
     }
-
-    .ip-address-info > :nth-child(n+1){
-        padding: 0 0 1rem;
-        border: none;
+    .ip-address-info > :not(:last-child){
+        border-right: 0;
+        border-bottom: 2px solid  hsl(0, 0%, 85%);
+    }
+    .ip-address-info > div{
+        padding: 10px 0;
         text-align: center;
     }
+
 }
 @media screen and (max-width: 500px) {
+    h1 {
+        margin: 1rem 2rem 0;
+    }
     .ip-address-info{
-        top: -5rem;
+        top: -3rem;
     }
 }
 @media screen and (max-width: 500px) {
