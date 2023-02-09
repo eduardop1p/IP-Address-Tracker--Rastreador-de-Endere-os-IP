@@ -165,31 +165,41 @@ footer{
     header > :not(:last-child) {
         margin-bottom: 1rem;
     }
-
+    h1 {
+        margin: 1rem 2rem 0;
+    }
     .ip-address-info{
-        top: -4rem;
+        top: -5.5rem;
         width: 400px;
         flex-direction: column;
         height: fit-content;
         align-items: center;
-        padding: 1rem;
+        padding: 13px;
     }
     .ip-address-info > :not(:last-child){
         border-right: 0;
         border-bottom: 2px solid  hsl(0, 0%, 85%);
     }
     .ip-address-info > div{
-        padding: 10px 0;
+        padding: 8px 0;
         text-align: center;
     }
 
+
 }
 @media screen and (max-width: 500px) {
-    h1 {
-        margin: 1rem 2rem 0;
-    }
+
     .ip-address-info{
-        top: -3rem;
+        top: -3.5rem;
+    }
+    .ip-address-info > div{
+        padding: 5px 0;
+    }
+    .infos{
+        font-size: 13px;
+    }
+    h4{
+        font-size: 8px;
     }
 }
 @media screen and (max-width: 500px) {
