@@ -30,15 +30,13 @@ class IpAddressTracker{
         this.loaderActived()
         const url = 'https://api.ipify.org/?format=json'
         try{
-            const { data } = await axios(url)
+            const { data } = await axios.get(url)
 
             this.ipUserNum = data.ip
+            this.inputIp()
         }catch(err){ 
-            this.limpaLoader()
             this.err('Error no sistema, recarregue a página.') 
         }
-        this.limpaLoader()
-        this.inputIp()
     }
     inputIp(){
         const searchIp = document.querySelector('.search')
@@ -51,9 +49,9 @@ class IpAddressTracker{
         this.loaderActived()
         const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_KEY_GEOLOCATION}&ipAddress=${ipUserNum}`
         try{
-            const { data } = await axios(url)
+            const { data } = await axios.get(url)
             this.geolocationObject = {
-                ip: ipUserNum,
+                ip: data.ip,
                 location: { 
                     country: data.location.country,
                     region: data.location.region,
@@ -65,14 +63,15 @@ class IpAddressTracker{
                 },
                 isp: data.isp
             }
+            if(this.mapControler) this.mapControler.remove()
+            this.leafletMaps()
+            this.searchIpAction()
+            // this.limpaLoader()
         }catch(err){ 
             this.limpaLoader()
             this.err('Endereço IP inválido.') 
         }
-        this.limpaLoader()
-        if(this.mapControler) this.mapControler.remove()
-        this.leafletMaps()
-        this.searchIpAction()
+       
     }
     limpaLoader(){
         return document.querySelectorAll('.loader').forEach(loader => loader.remove())
