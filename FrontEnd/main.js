@@ -35,6 +35,7 @@ class IpAddressTracker{
             this.ipUserNum = data.ip
             this.inputIp()
         }catch(err){ 
+            this.limpaLoader()
             this.err('Error no sistema, recarregue a página.') 
         }
     }
@@ -45,7 +46,10 @@ class IpAddressTracker{
         searchIp.addEventListener('click', ()=> this.geolocationApi(this.ipElment.value))
     }
     async geolocationApi(ipUserNum){
-        if(!this.ipElment.value) return this.err('Campo IP não pode está vazio.')
+        if(!this.ipElment.value) {
+            this.err('Campo IP não pode está vazio.')
+            return
+        } 
         this.loaderActived()
         const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.API_KEY_GEOLOCATION}&ipAddress=${ipUserNum}`
         try{

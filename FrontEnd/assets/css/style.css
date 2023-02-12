@@ -76,7 +76,7 @@ h1{
 }
 
 #ip::placeholder{
-    font-size: 14px;
+    font-size: 15px;
 }
 
 #ip{
@@ -135,7 +135,7 @@ h4{
 }
 
 footer{
-    height: calc(100% - 250px);
+    height: 100%;
 }
 
 .map{
@@ -164,6 +164,7 @@ footer{
     }
     header > :not(:last-child) {
         margin-bottom: 1rem;
+
     }
     h1 {
         margin: 1rem 2rem 0;
@@ -178,6 +179,7 @@ footer{
     }
     .ip-address-info > :not(:last-child){
         border-right: 0;
+        width: 100%;
         border-bottom: 2px solid  hsl(0, 0%, 85%);
     }
     .ip-address-info > div{
