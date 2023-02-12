@@ -66,7 +66,7 @@ class IpAddressTracker{
             if(this.mapControler) this.mapControler.remove()
             this.leafletMaps()
             this.searchIpAction()
-            // this.limpaLoader()
+            this.limpaLoader()
         }catch(err){ 
             this.limpaLoader()
             this.err('Endereço IP inválido.') 
